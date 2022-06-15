@@ -26,7 +26,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	}
 	while(1)
 	{
-		write(STDOUT_FILENO,"#cisfun$ ",10);
+		write(STDOUT_FILENO,"#cisfun$ ",9);
 		if (getline(&lnptr, &n, stdin) == -1)
 		{
 			exit(EXIT_FAILURE);

@@ -12,7 +12,7 @@
  *
  * Return: Always 0.
  */
-int main(int __attribute__((__unused__)) argc, char *argv[])
+int main(int __attribute__((__unused__)) argc, __attribute__((__unused__)) char *argv[])
 {
 	pid_t ch;
 	char *lnptr, *tok = NULL;
@@ -30,7 +30,6 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		if (getline(&lnptr, &n, stdin) == -1)
 		{
 			exit(EXIT_FAILURE);
-			break;
 		}
 		tok = strtok(lnptr, "\n\r");
 		cmd[0] = tok;
@@ -40,7 +39,7 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 		{
 			if (execve(cmd[0], cmd, NULL))
 			{
-				perror(argv[0]);
+				perror("./shell");
 				exit(EXIT_FAILURE);
 			}
 		}

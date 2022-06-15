@@ -12,7 +12,7 @@
  *
  * Return: Always 0.
  */
-int main(int __attribute__((__unused__)) argc, __attribute__((__unused__)) char *argv[])
+int main(int argc, char *argv[])
 {
 	pid_t ch;
 	char *lnptr, *tok = NULL;
@@ -24,6 +24,8 @@ int main(int __attribute__((__unused__)) argc, __attribute__((__unused__)) char 
 		perror("lsh: allocation error\n");
 		exit(EXIT_FAILURE);
 	}
+	if (argc != 1)
+		perror("./shell: No such file or directory");
 	while(1)
 	{
 		write(STDOUT_FILENO,"#cisfun$ ",9);
@@ -39,7 +41,7 @@ int main(int __attribute__((__unused__)) argc, __attribute__((__unused__)) char 
 		{
 			if (execve(cmd[0], cmd, NULL))
 			{
-				perror("./shell");
+				perror(argv[0]);
 				exit(EXIT_FAILURE);
 			}
 		}

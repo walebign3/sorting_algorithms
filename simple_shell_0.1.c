@@ -29,7 +29,7 @@ int main(int __attribute__((__unused__)) argc, __attribute__((__unused__)) char 
 		write(STDOUT_FILENO,"#cisfun$ ",9);
 		if (getline(&lnptr, &n, stdin) == -1)
 		{
-			exit(EXIT_FAILURE);
+			break;
 		}
 		tok = strtok(lnptr, "\n\r");
 		cmd[0] = tok;

@@ -7,6 +7,8 @@
 
 /**
  * main - super simple shell
+ * @argc: passed argument count
+ * @argv: array of passed argument
  *
  * Return: Always 0.
  */

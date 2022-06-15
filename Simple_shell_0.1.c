@@ -15,9 +15,9 @@
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	pid_t ch;
-	char *tok, *lnptr = NULL;
-	size_t i, n;
-	char **cmd = malloc(64 * sizeof(char*));
+	char *lnptr, *tok = NULL;
+	size_t n;
+	char **cmd = malloc(2 * sizeof(char*));
 
 	if (!cmd)
 	{
@@ -33,11 +33,8 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 			break;
 		}
 		tok = strtok(lnptr, "\n\r");
-		for (i = 0; i < 1 && tok != NULL; i++)
-		{
-			cmd[i] = tok;
-		}
-		cmd[i] = NULL;
+		cmd[0] = tok;
+		cmd[1] = NULL;
 		ch = fork();
 		if (ch == 0)
 		{

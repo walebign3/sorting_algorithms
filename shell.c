@@ -50,7 +50,5 @@ int main(int argc, char *argv[])
 		if (ch > 0)
 		wait(NULL);
 	}
-	free(cmd);
-	free(lnptr);
 	return 0;
 }

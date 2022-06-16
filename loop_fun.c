@@ -19,7 +19,7 @@ void signal_handler(int m)
  *
  * Return: Always 0.
  */
-int main (int __attribute__((__unused__)) argc, char **argv)
+int main (int argc, char **argv)
 {
 	char **args;
         char *lnptr = NULL;
@@ -27,6 +27,8 @@ int main (int __attribute__((__unused__)) argc, char **argv)
         ssize_t lnsize;
         int int_mode;
 
+	if (ac < 1)
+		return (-1);
 	signal(SIGINT, signal_handler);
 	do {
 		int_mode = isatty(STDIN_FILENO);

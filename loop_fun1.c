@@ -8,7 +8,7 @@
 char *read_line(void)
 {
 	char *cmd = NULL;
-	ssize_t n = 0; // have getline allocate a buffer for us
+	size_t n = 0;
 	int int_mode;
 
 	int_mode = isatty(STDIN_FILENO);
@@ -35,9 +35,7 @@ int main (int argc, char **argv)
 {
 	char **args = NULL;
         char *lnptr = NULL;
-        size_t n = 0;
-        ssize_t lnsize;
-        int int_mode;
+	int status;
 	(void)argc;
 
 	do {
@@ -51,7 +49,7 @@ int main (int argc, char **argv)
 			if (!args)
 				free(lnptr);
 
-			execute_fun(args, argv);
+			status = execute_fun(args, argv);
 
 			free(args);
 		}

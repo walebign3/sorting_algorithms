@@ -6,7 +6,7 @@
  *
  * Return: line of pointer.
  */
-void execute_fun(char **tok, char **argv)
+int execute_fun(char **tok, char **argv)
 {
 	pid_t pid;
 	int status;
@@ -28,4 +28,5 @@ void execute_fun(char **tok, char **argv)
 	{
 		wait(&status);
 	}
+	return (status);
 }

@@ -15,7 +15,6 @@ char **tokens_fun(char *lnptr)
 	if (!tokens)
   	{
 		write(STDOUT_FILENO,"mem alloc error\n",16);
-		exit(EXIT_FAILURE);
 	}
 	token = strtok(lnptr, DELIM);
 	while (token != NULL)

@@ -19,7 +19,6 @@ int execute_fun(char **args, char **argv)
 		{
 			perror(argv[0]);
 		}
-		exit(EXIT_FAILURE);
 	}
 	else if (pid < 0)
 	{

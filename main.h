@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 #define BUFSIZE 64
-#define DELIM " \t\r\n\a"
+#define DELIM "\t\r\n\a"
 
 void loop_fun(char **argv);
 char *read_line(void);

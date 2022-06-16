@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 		int_mode = isatty(STDIN_FILENO);
 		if (int_mode == 1)
 		{
-			write(STDOUT_FILENO, “~$ “, 13);
+			write(STDOUT_FILENO, "#cisfun$ ", 9);
 		}
 		if (getline(&lnptr, &n, stdin) == -1)
 		{

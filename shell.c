@@ -13,9 +13,8 @@
 int main(int argc, char *argv[])
 {
 	pid_t ch;
-	char *tok, *lnptr = NULL;
-	size_t i, n;
-	int int_mode;
+	char *lnptr = NULL;
+	size_t n, lnsize;
 	char **cmd = malloc(64 * sizeof(char*));
 
 	if (!cmd)
@@ -23,21 +22,19 @@ int main(int argc, char *argv[])
 		perror("lsh: allocation error\n");
 		exit(EXIT_FAILURE);
 	}
-	if (argc != 1)
-		perror("./shell: No such file or directory");
-	while(int_mode)
+	if (argc < 1)
+		return (-1);
+	while(1)
 	{
-		int_mode = isatty(STDIN_FILENO);
-		if (int_mode == 1)
-		{
-			write(STDOUT_FILENO, "#cisfun$ ", 9);
-		}
-		if (getline(&lnptr, &n, stdin) == -1)
-		{
+		write(STDOUT_FILENO,"#cisfun$ ",10);
+		lnsize = getline(&lnptr, &n, stdin);
+		if (lnsize < 1)
 			break;
-		}
-		tok = strtok(lnptr, "\n\r");
-		cmd[0] = tok;
+		if (lnptr[lnsize - 1] == '\n')
+			lnptr[lnsize-1] = '\0';
+		if (cmd == NULL || *cmd == NULL || **cmd == '\0')
+			continue;
+		cmd[0] = lnptr;
 		cmd[1] = NULL;
 		ch = fork();
 		if (ch == 0)
@@ -45,10 +42,13 @@ int main(int argc, char *argv[])
 			if (execve(cmd[0], cmd, NULL))
 			{
 				perror(argv[0]);
+				exit(EXIT_FAILURE);
 			}
 		}
 		if (ch > 0)
-		wait(NULL);
+			wait(NULL);
 	}
+	free(cmd);
+	free(lnptr);
 	return 0;
 }

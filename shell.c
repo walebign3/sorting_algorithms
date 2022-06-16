@@ -4,7 +4,7 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <stdlib.h>
-
+#include <signal.h>
 /**
  * main - super simple shell
  *
@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
 {
 	pid_t ch;
 	char *lnptr = NULL;
-	size_t n, lnsize;
+	size_t n;
+	ssize_t lnsize;
 	char **cmd = malloc(64 * sizeof(char*));
 
 	if (!cmd)
@@ -24,7 +25,7 @@ int main(int argc, char *argv[])
 	}
 	if (argc < 1)
 		return (-1);
-	while(1)
+	while(lnsize != EOF)
 	{
 		write(STDOUT_FILENO,"#cisfun$ ",10);
 		lnsize = getline(&lnptr, &n, stdin);
@@ -32,8 +33,6 @@ int main(int argc, char *argv[])
 			break;
 		if (lnptr[lnsize - 1] == '\n')
 			lnptr[lnsize-1] = '\0';
-		if (cmd == NULL || *cmd == NULL || **cmd == '\0')
-			continue;
 		cmd[0] = lnptr;
 		cmd[1] = NULL;
 		ch = fork();

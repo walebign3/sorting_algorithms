@@ -10,7 +10,7 @@
 
 #define BUFSIZE 64
 #define DELIM " \t\r\n\a"
-
+extern __sighandler_t signal(int __sig, __sighandler_t __handler);
 char **tokens_fun(char *lnptr);
 void execute_fun(char **tok, char **argv);
 void loop_fun(char **argv);

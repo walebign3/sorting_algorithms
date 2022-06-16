@@ -34,22 +34,17 @@ int main(int argc, char *argv[])
 		}
 		if (getline(&lnptr, &n, stdin) == -1)
 		{
-			exit(EXIT_FAILURE);
 			break;
 		}
 		tok = strtok(lnptr, "\n\r");
-		for (i = 0; i < 1 && tok != NULL; i++)
-		{
-			cmd[i] = tok;
-		}
-		cmd[i] = NULL;
+		cmd[0] = tok;
+		cmd[1] = NULL;
 		ch = fork();
 		if (ch == 0)
 		{
 			if (execve(cmd[0], cmd, NULL))
 			{
 				perror(argv[0]);
-				exit(EXIT_FAILURE);
 			}
 		}
 		if (ch > 0)

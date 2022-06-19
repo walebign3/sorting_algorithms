@@ -8,7 +8,7 @@
  */
 char **tokens_fun(char *lnptr)
 {
-	int bufsize = BUFSIZE, i = 0;
+	int bufsize = BUFSIZE;
 	char **tokens = malloc(bufsize * sizeof(char*));
 	char *token;
 
@@ -18,7 +18,8 @@ char **tokens_fun(char *lnptr)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(lnptr, DELIM);
-	tokens[i] = NULL;
+	tokens[0] = token;
+	tokens[1] = NULL;
 	return tokens;
 }
 

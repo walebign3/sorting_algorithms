@@ -27,14 +27,10 @@ int main (int argc, char **argv)
 		lnsize = getline(&lnptr, &n, stdin);
 		if (lnsize < 0)
 			break;
-		if (lnptr[lnsize - 1] == '\n')
-			lnptr[lnsize - 1] = '\0';
 		args = tokens_fun(lnptr);
 		if (args == NULL || *args == NULL || **args == '\0')
 			continue;
 		execute_fun(args, argv);
-
-		free(args);
 	}
 	if (lnsize < 0 && int_mode == 1)
 		write(STDERR_FILENO, "\n", 1);

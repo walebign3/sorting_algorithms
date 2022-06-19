@@ -3,7 +3,7 @@
 /**
  * execute_fun - split command arguments
  * @tok: pointer to command arguments
- *
+ * @argv: file name
  * Return: line of pointer.
  */
 void execute_fun(char **tok, char **argv)

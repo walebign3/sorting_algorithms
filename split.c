@@ -2,7 +2,7 @@
 
 /**
  * tokens_fun - split command arguments
- * @line: pointer to command arguments
+ * @linptr: pointer to command arguments
  *
  * Return: line of pointer.
  */

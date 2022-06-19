@@ -8,7 +8,7 @@
  */
 char **tokens_fun(char *lnptr)
 {
-	char **tokens = malloc(64 * sizeof(char*));
+	char **tokens = malloc(2 * sizeof(char*));
 
 	if (!tokens)
 	{

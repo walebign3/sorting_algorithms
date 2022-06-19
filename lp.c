@@ -33,6 +33,7 @@ int main (int argc, char **argv)
 		if (args == NULL || *args == NULL || **args == '\0')
 			continue;
 		execute_fun(args, argv);
+
 		free(args);
 	}
 	if (lnsize < 0 && int_mode == 1)

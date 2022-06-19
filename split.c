@@ -17,7 +17,7 @@ char **tokens_fun(char *lnptr)
 	}
 
 	tokens[0] = lnptr;
-	tokens[1] = NULL;
+/*	tokens[1] = NULL;*/
 
 	return tokens;
 }

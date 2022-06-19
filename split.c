@@ -16,7 +16,7 @@ char **tokens_fun(char *lnptr)
 		exit(EXIT_FAILURE);
 	}
 
-	tokens[0] = strtok(lnptr, "\n\r");
+	tokens[0] = lnptr;
 	tokens[1] = NULL;
 
 	return tokens;

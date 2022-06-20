@@ -20,7 +20,7 @@ int main (int argc, char **argv)
 	int int_mode;
 	pid_t pid;
 	int status;
-	char **args = malloc(2 * sizeof(char*));
+	char *args[2];
 
 	if (argc < 1)
 		return (-1);
@@ -38,8 +38,6 @@ int main (int argc, char **argv)
 			lnptr[lnsize - 1] = '\0';
 		args[0] = lnptr;
 		args[1] = NULL;
-		if (args == NULL || *args == NULL || **args == '\0')
-			continue;
 		pid = fork();
 		if (pid == 0)
 		{
@@ -57,8 +55,6 @@ int main (int argc, char **argv)
 		{
 			wait(&status);
 		}
-
-		free(args);
 	}
 	if (lnsize < 0 && int_mode == 1)
 		write(STDERR_FILENO, "\n", 1);

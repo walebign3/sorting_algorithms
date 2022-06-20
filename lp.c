@@ -38,6 +38,8 @@ int main (int argc, char **argv)
 			lnptr[lnsize - 1] = '\0';
 		args[0] = lnptr;
 		args[1] = NULL;
+		if (args == NULL || *args == NULL || **args == '\0')
+			continue;
 		pid = fork();
 		if (pid == 0)
 		{
@@ -56,7 +58,7 @@ int main (int argc, char **argv)
 			wait(&status);
 		}
 	}
-	if (lnsize < 0 && int_mode == 1)
+	if (int_mode == 1)
 		write(STDERR_FILENO, "\n", 1);
 	free(lnptr);
 	return (0);

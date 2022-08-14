@@ -3,8 +3,9 @@
 #include "sort.h"
 
 /**
- * array - array of unsorted data
- * size - size of array
+ * bubble_sort - bubble sort function
+ * @array: array of unsorted data
+ * @size: size of array
  *
  * Return: Always 0
  */

@@ -1,35 +1,43 @@
-#include <stdio.h>
 #include "sort.h"
-
 /**
- * selection_sort - selection_sort
+ * _swap - swap two numbers
+ * @a: integer
+ * @b: integer
+ **/
+void _swap(int *a, int *b)
+{
+	int tmp;
+
+	tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+/**
+ * selection_sort - sort array using selection sort algorithm
  * @array: array
- * @size: number of elements
- *
- * Return: Always 0
- */
+ * @size: array size
+ **/
+
 void selection_sort(int *array, size_t size)
 {
-	size_t i, j, position;
-	int swap;
+	unsigned int i, j, min;
 
 	if (array == NULL || size < 2)
 		return;
 
-	for (i = 0; i < size - 1; i++)
+	for (i = 0; i < size; i++)
 	{
-		position = i;
+		min = i;
 		for (j = i + 1; j < size; j++)
 		{
-			if (array[j] < array[position])
-				position = j;
+			if (array[min] > array[j])
+				min = j;
 		}
-		if (position != i)
+		if (min != i)
 		{
-			swap = array[i];
-			array[i] = array[position];
-			array[position] = swap;
+			_swap(&array[i], &array[min]);
 			print_array(array, size);
 		}
 	}
+
 }

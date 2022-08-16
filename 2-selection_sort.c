@@ -12,15 +12,15 @@ void selection_sort(int *array, size_t size)
 {
 	size_t i, j, swap, position;
 
-	for(i = 0; i <= size - 2; i++)
+	for (i = 0; i <= size - 2; i++)
 	{
 		position = i;
-		for(j = i + 1; j <= size - 1; j++)
+		for (j = i + 1; j <= size - 1; j++)
 		{
-			if(array[j] < array[position])
+			if (array[j] < array[position])
 			position = j;
 		}
-		if(position != i)
+		if (position != i)
 		{
 			swap = array[i];
 			array[i] = array[position];

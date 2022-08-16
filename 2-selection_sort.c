@@ -2,7 +2,9 @@
 #include "sort.h"
 
 /**
- * main - Entry point
+ * selection_sort - selection_sort
+ * @array: array
+ * @size: number of elements
  *
  * Return: Always 0
  */
